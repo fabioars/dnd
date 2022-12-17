@@ -85,10 +85,6 @@
     box-sizing: border-box;
   }
 
-  .input--dice {
-    max-width: 85px;
-  }
-
   .input:focus {
     outline: 1px solid var(--color-primary);
   }
