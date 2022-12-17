@@ -35,11 +35,3 @@ export function runDice(quantity, sides, bonus = 0) {
     dice: `${quantity}d${sides}${bonus >= 0 ? `+${bonus}` : bonus}`
   }
 }
-
-
-
-[
-  "Valkanyr 1d20",
-  "Balin 1d20",
-  "Awren 1d20+1",
-]

@@ -1,17 +1,16 @@
 <script>
-  let active = 0;
-  const items = [
-    { slug: "/iniciativa", label: "Iniciativa" },
-    { slug: "/comercio", label: "Comércio" },
-    { slug: "/magias", label: "Magias" },
-  ];
+  import { createEventDispatcher } from 'svelte';
+
+  export let value;
+  export let items;
 </script>
 
 <nav class="nav">
   <ul class="nav__list">
-    {#each items as item, i}
-      <li class="nav__item" class:nav__item--active={i === active}>
-        <a href="{item.slug}" class="nav__link" on:click|preventDefault="{() => active = i}">{item.label}</a>
+    {#each items as item}
+      <li class="nav__item" class:nav__item--active={item.slug == value}>
+        <!-- svelte-ignore a11y-invalid-attribute -->
+        <a href="#" class="nav__link" on:click|preventDefault="{() => value = item.slug}">{item.label}</a>
       </li>
     {/each}
   </ul>
