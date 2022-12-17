@@ -20,7 +20,7 @@
 </script>
 
 <div class="page">
-  <Header>Iniciativa</Header>
+  <Header>{items.find((item) => item.slug === active).label}</Header>
   <Tabs items={items} bind:value={active}/>
 
   <div class="content">
