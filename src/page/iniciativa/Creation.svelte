@@ -42,14 +42,11 @@
 
   {#each chars as char, index}
     <li class="init__item">
-      <div class="init__content">
-        <span class="init__text">
-          {char.name} [{char.dice}]
-        </span>
-
-        <button class="button button--icon button--secondary" on:click={() => edit(index)}><img src={IconEdit} alt="edit user"></button>
-        <button class="button button--icon button--secondary" on:click={() => remove(index)}><img src={IconUserMinus} alt="remove user"></button>
-      </div>
+      <form class="init__form" on:submit|preventDefault={() => {}}>
+        <input type="text" class="input input--clear" placeholder="Personagem" bind:value={char.name}>
+        <input type="text" class="input input--clear input--dice" placeholder="1d20" bind:value={char.dice}>
+        <button class="button button--icon button--secondary" type="button" on:click={() => remove(index)}><img src={IconUserMinus} alt="remove user"></button>
+      </form>
     </li>
   {/each}
 </List>
@@ -70,21 +67,6 @@
     padding: 0 30px;
   }
 
-  .init__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    gap: 8px;
-    padding: 0 30px;
-  }
-
-  .init__text {
-    font-size: 16px;
-    font-weight: bold;
-    margin-right: auto;
-  }
-
   .input {
     display: block;
     width: 100%;
@@ -102,6 +84,14 @@
 
   .input:focus {
     outline: 1px solid var(--color-primary);
+  }
+
+  .input--clear {
+    border-color: transparent;
+  }
+
+  .input--clear:focus {
+    border-color: var(--color-black-10);
   }
 
   .button {
