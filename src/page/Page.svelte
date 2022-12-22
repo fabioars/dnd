@@ -1,8 +1,8 @@
 <script>
   import Header from '../components/Header.svelte';
   import Tabs from '../components/Tabs.svelte';
-  import DB from './DB.svelte';
-  import Iniciativa from './Iniciativa.svelte';
+  import List from './List.svelte';
+  import Iniciative from './Iniciative.svelte';
 
   import DataClass from '../db/dnd5e.classes.json';
   import DataRace from '../db/dnd5e.races.json';
@@ -24,11 +24,11 @@
   <Tabs items={items} bind:value={active}/>
 
   <div class="content">
-    <div class="item" class:active={active === "/iniciativa"}><Iniciativa /></div>
-    <div class="item" class:active={active === "/classes"}><DB data={DataClass} label="Classes" /></div>
-    <div class="item" class:active={active === "/racas"}><DB data={DataRace} label="Raças" /></div>
-    <div class="item" class:active={active === "/magias"}><DB data={DataSpells} label="Magias" /></div>
-    <div class="item" class:active={active === "/tradegoods"}><DB data={DataTradeGoods} label="Comércio" /></div>
+    <div class="item" class:active={active === "/iniciativa"}><Iniciative /></div>
+    <div class="item" class:active={active === "/classes"}><List data={DataClass} label="Classes" /></div>
+    <div class="item" class:active={active === "/racas"}><List data={DataRace} label="Raças" /></div>
+    <div class="item" class:active={active === "/magias"}><List data={DataSpells} label="Magias" /></div>
+    <div class="item" class:active={active === "/tradegoods"}><List data={DataTradeGoods} label="Comércio" /></div>
   </div>
 </div>
 
