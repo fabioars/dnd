@@ -8,7 +8,7 @@
   const MODE_RUN = 'run';
 
   let mode = db.load('mode', MODE_CREATE);
-  export let chars = db.load('chars', []);
+  let chars = db.load('chars', []);
 
   $: db.save('chars', chars);
   $: db.save('mode', mode);

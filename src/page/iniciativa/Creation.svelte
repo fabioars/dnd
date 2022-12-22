@@ -118,7 +118,7 @@
   }
 
   .input--dice {
-    max-width: 85px;
+    max-width: 95px;
   }
 
   .input:focus {
