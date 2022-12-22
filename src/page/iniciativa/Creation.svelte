@@ -6,12 +6,12 @@
   const DEFAULT_HP = 50;
   const DEFAULT_DICE = "1d20";
   export let chars;
+  export let current = -1;
 
   let inputChar = "";
   let inputDice = "";
   let hp;
   let maxHp;
-
 
   function onSubmit() {
     if (inputDice === "") inputDice = DEFAULT_DICE
@@ -21,7 +21,7 @@
       dice: inputDice,
       maxHp: maxHp ? maxHp : DEFAULT_HP,
       hp: hp ? hp : DEFAULT_HP,
-      iniciative: 0,
+      iniciative: { sum: 0 },
     }, ...chars];
 
     inputChar = "";
@@ -32,14 +32,6 @@
     chars = chars
       .map((d, i) => ({...d, i }))
       .filter(({ i }) => i !== index);
-  }
-
-  function edit(index) {
-    const char = chars[index];
-    inputChar = char.name;
-    inputDice = char.dice;
-
-    remove(edit);
   }
 </script>
 
@@ -55,7 +47,7 @@
   </li>
 
   {#each chars as char, index}
-    <li class="init__item">
+    <li class="init__item"  class:current={current === index}>
       <form class="init__form" on:submit|preventDefault={() => {}}>
         <span class="iniciative">{char.iniciative.sum}</span>
         <input type="text" class="input input--clear" placeholder="Personagem" bind:value={char.name}>
@@ -77,6 +69,10 @@
     background-color: var(--color-white-10);
     border-bottom: 1px solid var(--color-white-20);
     padding: 0 30px;
+  }
+
+  .current {
+    background-color: var(--color-primary);
   }
 
   .init__form {
@@ -126,10 +122,12 @@
   }
 
   .input--clear {
+    background-color: transparent;
     border-color: transparent;
   }
 
   .input--clear:focus {
+    background-color: var(--color-white-10);
     border-color: var(--color-black-10);
   }
 </style>
