@@ -21,6 +21,7 @@
       dice: inputDice,
       maxHp: maxHp ? maxHp : DEFAULT_HP,
       hp: hp ? hp : DEFAULT_HP,
+      iniciative: 0,
     }, ...chars];
 
     inputChar = "";
@@ -56,6 +57,7 @@
   {#each chars as char, index}
     <li class="init__item">
       <form class="init__form" on:submit|preventDefault={() => {}}>
+        <span class="iniciative">{char.iniciative.sum}</span>
         <input type="text" class="input input--clear" placeholder="Personagem" bind:value={char.name}>
         <input type="text" class="input input--clear input--dice" placeholder="1d20" bind:value={char.dice}>
         <button class="button button--icon button--secondary" type="button" on:click={() => remove(index)}><img src={IconUserMinus} alt="remove user"></button>
@@ -101,6 +103,20 @@
     grid-template-columns: 1fr 85px 85px;
   }
 
+  .iniciative {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    color: var(--color-white-10);
+    background-color: var(--color-black-10);
+    font-size: 12px;
+    font-weight: bold;
+  }
+
   .input--dice {
     max-width: 85px;
   }
@@ -116,38 +132,4 @@
   .input--clear:focus {
     border-color: var(--color-black-10);
   }
-
-  .button {
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 8px;
-    border: 2px solid var(--color-black-10);
-    background-color: var(--color-primary);
-    cursor: pointer;
-  }
-
-  .button:after {
-    display: block;
-    content: '';
-  }
-
-  .button--icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .button--icon > img{
-    width: 18px;
-  }
-
-  .button--secondary {
-    color: var(--color-black-10);
-    background-color: var(--color-white-20);
-  }
-
-
 </style>
